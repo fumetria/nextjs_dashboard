@@ -8,12 +8,12 @@ import { Suspense } from 'react';
 import { fetchInvoicesPages } from '@/app/lib/data';
  
 export default async function Page(props: {
-    searchParam?: Promise<{
+    searchParams?: Promise<{
         query?: string;
         page?: string; 
     }>;
 }) {
-    const searchParam = await props.searchParam;
+    const searchParam = await props.searchParams;
     const query = searchParam?.query || '';
     const currentPage = Number(searchParam?.page) || 1;
     const totalPages = await fetchInvoicesPages(query);
