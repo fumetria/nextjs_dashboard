@@ -97,6 +97,13 @@ export async function deleteInvoice(id: string) {
     revalidatePath("/dashboard/invoices");
 }
 
+export async function deleteCustomer(id: string) {
+    // throw new Error("Failed to Delete Invoice");
+    await sql`DELETE FROM customer WHERE id = ${id}`;
+
+    revalidatePath("/dashboard/customers");
+}
+
 export async function authenticate(
     prevState: string | undefined,
     formData: FormData,
